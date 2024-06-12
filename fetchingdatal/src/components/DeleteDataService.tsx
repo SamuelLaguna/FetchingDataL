@@ -8,7 +8,7 @@ interface User {
   username: string;
 }
 
-const DeleteData = () => {
+const DeleteDataService = () => {
   //We need a useState to help us hold the state of our users
   const [users, setUsers] = useState<User[]>([]);
 
@@ -57,4 +57,4 @@ const DeleteData = () => {
   );
 };
 
-export default DeleteData;
+export default DeleteDataService;
