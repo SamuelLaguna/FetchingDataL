@@ -1,42 +1,17 @@
 
 // import axios from "axios";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 // import apiClient from "../services/apiClient"
-import userService from "../services/userService";
-interface User {
-  id: number;
-  name: string;
-  username: string;
-}
+import userService, { User } from "../services/userService";
+import useUsers from "../hooks/useUsers";
+// interface User {
+//   id: number;
+//   name: string;
+//   username: string;
+// }
 
 const DeleteDataService = () => {
-  //We need a useState to help us hold the state of our users
-  const [users, setUsers] = useState<User[]>([]);
-
-  //Create a function to helps us fetch our data with axios
-
-  //UseState to help use handle errors
-  const [error, setError] = useState("");
- const [isLoading, setIsLoading] = useState(false)
-
-  const FetchData = () => {
-    setIsLoading(true);
-    const {request} = userService.getAll<User>();
-    request
-      .then((response) => {
-        setUsers(response.data)
-        setIsLoading(false);
-      } )
-      .catch((error) => {
-        setError(error.message)
-        setIsLoading(false);
-      } );
-  };
-
-  //UseEffect to help us with our fecthing data
-  useEffect(() => {
-    FetchData();
-  }, []);
+  const {users,setUsers, error,setError,isLoading, setIsLoading} = useUsers();
 
   //Lets Create a helper function to helpnus delete our users from our front end UI 
   const userDelete = (user:User) => {
@@ -54,7 +29,7 @@ const DeleteDataService = () => {
       <h1 className="text-center ">CRUD Delete</h1>
       <ul className="list-group">
         {users.map((user) => (
-          <li className="list-group-item d-flex justify-content-between" key={user.id}>{user.username} <button onClick={() => userDelete(user)} className="btn btn-outline-danger">Delete</button></li>
+          <li className="list-group-item d-flex justify-content-between" key={user.id}>{user.name} <button onClick={() => userDelete(user)} className="btn btn-outline-danger">Delete</button></li>
         ))}
         
         {error && <p className="text-danger">{error}</p>}

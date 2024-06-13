@@ -6,4 +6,4 @@ export interface User{
     name:string
 }
 
-export default create('/user')
+export default create('/users')

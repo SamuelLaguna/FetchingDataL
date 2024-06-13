@@ -2,43 +2,11 @@ import axios from "axios"
 import { useEffect, useState } from "react";
 import apiClient from "../services/apiClient";
 import userService from "../services/userService";
-interface User {
-    id:number,
-    name:string
-    username:string
-}
+import useUsers from "../hooks/useUsers";
 
 const FetchingAxiosService = () => {
 
-    //We need a useState to help us hold the state of our users
-    const [users, setUsers] = useState<User[]>([])
-
-    //Create a function to helps us fetch our data with axios
-
-    //UseState to help use handle errors
-   const [error, setError] = useState('')
-    // const FetchData = () => {
-    //     axios.get("https://jsonplaceholder.typicode.com/users").then(response => setUsers(response.data));
-        
-    // }
-
- const FetchData = () => {
-  const {request} = userService.getAll<User>();
-  request
-    .then((response) => setUsers(response.data))
-    .catch(error => setError(error.message))
- }
-
-
-   
-    
-    //UseEffect to help us with our fecthing data
-    useEffect(() => {
-        FetchData();
-        
-    
-      
-    }, [])
+  const {users,setUsers, error,setError,isLoading, setIsLoading} = useUsers();
     
   return (
     <>

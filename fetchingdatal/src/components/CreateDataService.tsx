@@ -3,12 +3,10 @@
 import { useEffect, useState } from "react";
 // import apiClient from "../services/apiClient"
 import userService from "../services/userService";
-interface User {
-    id: number
-    name: string
-}
+import useUsers from "../hooks/useUsers";
+
 const CreateDataService = () => {
-    //we need a useState to help us hold the state of our users
+   const {users,setUsers, error,setError,isLoading, setIsLoading} = useUsers();
    
 //create a helper function to help us delete our users
 const addUser = () => {

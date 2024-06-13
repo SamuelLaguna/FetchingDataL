@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import userService, {User} from "../services/userService";
 const useUsers = () => {
-    const [user, setUsers] = useState<User[]>([]);
+    const [users, setUsers] = useState<User[]>([]);
     //useState to help use handle errors
     const [error, setError] = useState('')
     //useState for loading indicator
@@ -26,7 +26,7 @@ const useUsers = () => {
         FetchData();
     }, [])
 
-    return {user, setUsers, error, setError,}
+    return {users, setUsers, error, setError,isLoading,setIsLoading}
 }
 
 export default useUsers;
