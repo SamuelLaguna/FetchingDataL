@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 interface User {
     id:number,
     name:string
-    username:string
+    
 }
 
 const FetchingAxios = () => {
@@ -23,19 +23,23 @@ const FetchingAxios = () => {
 
  const FetchData = () => {
     axios
+    //request
     .get("https://jsonplaceholder.typicode.com/users")
+    //Handles Response
     .then((response) => setUsers(response.data))
+    //Handles errors
     .catch(error => setError(error.message))
  }
 
 
    
     
-    //UseEffect to help us with our fecthing data
+    //UseEffect o help us with our fecthing data
+    //Need useEffect to fetch the data 
     useEffect(() => {
         FetchData();
         
-    
+        
       
     }, [])
     
@@ -43,7 +47,8 @@ const FetchingAxios = () => {
     <>
     <h1 className="text-center">Fetching Data With Axios</h1>
     <ul>
-        {users.map(user => (<li key={user.id}>{user.username}</li>
+        {/* //Map tells it to go threw every single user and display them over */}
+        {users.map(user => (<li key={user.id}>{user.name}</li>
     
     ))}
     {error && <p className="text-danger">{error}</p>}
