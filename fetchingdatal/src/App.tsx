@@ -9,29 +9,31 @@ import LoadingIndicator from "./components/LoadingIndicator"
 import DeleteData from "./components/DeleteData"
 import CreateData from "./components/CreateData"
 import UpdateData from "./components/UpdateData"
+import DeleteDataService from "./components/DeleteDataService"
 
 const App = () => {
   const [category, setCategory] = useState('')
   return (
   <>
   <h1 className="text-center">React Fetching Data Examples, Using Axios, services, HTTP, CRUD</h1>
+  < DeleteDataService/>
   <UpdateData/>
-  {/* <CreateData/> */}
-  {/* <DeleteData/> */}
-  {/* <AsyncAwait/> */}
-  {/* <LoadingIndicator/> */}
-  {/* <FetchingWFetch/> */}
-  {/* <FetchingAxios/> */}
-  {/* <UseEffectsExample/> */}
-  {/* <UseEffectExample2/> */}
-  {/* <ProductList category={category}/>
+  <CreateData/>
+  <DeleteData/>
+  <AsyncAwait/>
+  <LoadingIndicator/>
+  <FetchingWFetch/>
+  <FetchingAxios/>
+  <UseEffectsExample/>
+  <UseEffectExample2/>
+  {/* {/* <ProductList category={category}/> */}
   <div>
     <select className="form-select" onChange={(e) => setCategory(e.target.value)}>
       <option value=''></option>
       <option value='Clothing'>Clothing</option>
       <option value='HouseHold'>HouseHold</option>
     </select>
-  </div> */}
+  </div> 
   </>
   )
 }
